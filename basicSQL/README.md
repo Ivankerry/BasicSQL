@@ -13,7 +13,7 @@ Implementing indexing and performance optimization
 1. Install MySQL/PostgreSQL (or any SQL database of choice).
 2. Clone this repository:
 git clone https://github.com/yourusername/basicSQL.git
-cd basicSQL
+    cd basicSQL
 
 3. Run the SQL scripts in your database:
 mysql -u your_user -p < scripts/create_tables.sql

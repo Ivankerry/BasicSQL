@@ -1,0 +1,62 @@
+-- Creating the CLOTHE database
+CREATE DATABASE CLOTHE;
+GO
+
+-- Selecting CLOTHE database
+USE CLOTHE;
+GO
+
+-- Creating the OUTFIT table
+CREATE TABLE OUTFIT (
+    Shop CHAR(1),
+    Outfit_Name VARCHAR(50),
+    Outfit_Colour VARCHAR(20),
+    Price INT,
+    City VARCHAR(50)
+);
+
+-- Inserting data into the OUTFIT table
+INSERT INTO OUTFIT (Shop, Outfit_Name, Outfit_Colour, Price, City)
+VALUES
+    ('A', 'Levis trouser', 'Blue', 1400, 'Nairobi'),
+    ('B', 'Blazer shirt', 'Purple', 900, 'Nyeri'),
+    ('C', 'Savco trouser', 'Brown', 1200, 'Kisumu'),
+    ('D', 'Jeans shirt', 'Black', 800, 'Kiambu');
+
+-- Updating the OUTFIT table
+UPDATE OUTFIT
+SET Shop = 'E', Outfit_Name = 'Jeans trouser', Outfit_Colour = 'Blue', Price = 750, City = 'Kiambu'
+WHERE Shop = 'D';
+
+-- Query to display outfit names and prices for outfits in Kiambu or Nyeri
+SELECT Outfit_Name, Price FROM OUTFIT
+WHERE City IN ('Kiambu', 'Nyeri');
+
+-- Creating the Patient table
+CREATE TABLE Patient (
+    PatNumber VARCHAR(10),
+    PatName VARCHAR(50),
+    Appointment_Date DATE
+);
+
+-- Inserting data into the Patient table
+INSERT INTO Patient (PatNumber, PatName, Appointment_Date)
+VALUES
+    ('P453', 'Abraham', '2017-11-16'),
+    ('P467', 'Joel', '2017-11-17'),
+    ('P472', 'Ann', '2017-11-16');
+
+-- Display all patients' numbers and names
+SELECT PatNumber, PatName FROM Patient;
+
+-- Display patients whose appointment date is 17-11-2017
+SELECT * FROM Patient WHERE Appointment_Date = '2017-11-17';
+
+-- Display patient's name and appointment date for PatNumber P472
+SELECT PatName, Appointment_Date FROM Patient WHERE PatNumber = 'P472';
+
+-- Display patients with appointment dates between 16-11-2017 and 17-11-2017
+SELECT * FROM Patient WHERE Appointment_Date BETWEEN '2017-11-16' AND '2017-11-17';
+
+-- Update patient P472's name to Jane
+UPDATE Patient SET PatName = 'Jane' WHERE PatNumber = 'P472';

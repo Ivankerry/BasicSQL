@@ -1,0 +1,38 @@
+-- Creating the BANK database
+CREATE DATABASE BANK;
+GO
+
+-- Selecting BANK database
+USE BANK;
+GO
+
+-- Creating the BANK_DETAILS table
+CREATE TABLE BANK_DETAILS (
+    Product VARCHAR(50),
+    Quantity INT,
+    Price FLOAT,
+    Purchase_Cost DECIMAL(10,2),
+    Estimated_Sale_Price FLOAT
+);
+
+-- Inserting records into BANK_DETAILS
+INSERT INTO BANK_DETAILS (Product, Quantity, Price, Purchase_Cost, Estimated_Sale_Price)
+VALUES
+    ('PayCard', 3, 330, 200, 700),
+    ('PayPoints', 4, 200, 150, 300);
+
+-- Display all columns, data types, and sizes in BANK_DETAILS
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'BANK_DETAILS';
+
+-- Creating a simple view with Product and Price
+CREATE VIEW Product_Price_View AS
+SELECT Product, Price FROM BANK_DETAILS;
+
+-- Updating product PayPoints price to 450
+UPDATE BANK_DETAILS SET Price = 450 WHERE Product = 'PayPoints';
+
+-- Displaying the product with the highest quantity
+SELECT TOP 1 Product FROM BANK_DETAILS
+ORDER BY Quantity DESC;
